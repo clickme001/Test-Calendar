@@ -6,10 +6,11 @@ import dayGridPlugin from 'https://unpkg.com/@fullcalendar/daygrid@6.1.15/dist/f
 const calendar = new Calendar(calendarEl, {
   plugins: [dayGridPlugin, interactionPlugin],
   //... (rest of the calendar configuration)
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
-    var calendar = new fullcalendarEsmJs.Calendar(calendarEl, {
+    var calendar = new Calendar(calendarEl, {
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
