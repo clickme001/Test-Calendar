@@ -5,12 +5,16 @@ import dayGridPlugin from 'https://unpkg.com/@fullcalendar/daygrid@6.1.15/dist/f
 // Initialize the calendar with the necessary plugins
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
-    const calendar = new Calendar(calendarEl, {
-        plugins: [dayGridPlugin, interactionPlugin],
-        //... (rest of the calendar configuration)
-    });
+    if (calendarEl) {
+        const calendar = new Calendar(calendarEl, {
+            plugins: [dayGridPlugin, interactionPlugin],
+            //... (rest of the calendar configuration)
+        });
 
-    calendar.render();
+        calendar.render();
+    } else {
+        console.error('Calendar element not found in the DOM.');
+    }
 });
 
 function fetchCalendarEvents() {

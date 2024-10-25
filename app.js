@@ -19,6 +19,9 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// Serve static files from the current directory
+app.use(express.static(__dirname));
+
 // ICS Feed Proxy Route
 app.get('/ical-proxy', (req, res) => {
     axios.get(icsFeedUrl)
