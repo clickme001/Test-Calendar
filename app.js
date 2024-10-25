@@ -14,6 +14,10 @@ app.use(cors({
     optionsSuccessStatus: 204
 }));
 
+app.use(express.static('public'));
+
+app.use(express.static(__dirname));
+
 // Serve index.html
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
