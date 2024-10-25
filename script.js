@@ -6,7 +6,33 @@ import dayGridPlugin from 'https://unpkg.com/@fullcalendar/daygrid@6.1.15/dist/f
 import interactionPlugin from 'https://unpkg.com/@fullcalendar/interaction@6.1.15/dist/fullcalendar.esm.js';
 import { ICAL } from 'https://unpkg.com/ical.js@1.4.0/dist/ical.js'; // Ensure the version matches your needs
 
+<<<<<<< HEAD
 // Function to fetch calendar events from the iCal proxy
+=======
+// Initialize the calendar with the necessary plugins
+const calendar = new Calendar(calendarEl, {
+  plugins: [dayGridPlugin, interactionPlugin,],
+  //... (rest of the calendar configuration)
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new Calendar(calendarEl, {
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        initialDate: new Date(),
+        navLinks: true, // can click day/week labels to navigate views
+        editable: false,
+        dayMaxEvents: true, // allow "more" link when too many events
+        events: fetchCalendarEvents(), // Fetch events from the server
+    });
+    calendar.render();
+});
+
+>>>>>>> 4c26a382bd0b395cf756a3853caaff65f2efa6b8
 function fetchCalendarEvents() {
     return fetch('/ical-proxy')
        .then(response => {
@@ -15,6 +41,7 @@ function fetchCalendarEvents() {
             }
             return response.text();
         })
+<<<<<<< HEAD
        .then(data => {
             try {
                 const ical = ICAL.parse(data);
@@ -68,3 +95,10 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error("Calendar element not found. Please add a div with the id 'calendar'.");
     }
 });
+=======
+     .catch(error => {
+            console.error('Error fetching or parsing ICS feed:', error,);
+            return []; // Return an empty array on error
+        });
+}
+>>>>>>> 4c26a382bd0b395cf756a3853caaff65f2efa6b8
