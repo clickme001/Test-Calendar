@@ -4,7 +4,7 @@ import dayGridPlugin from 'https://unpkg.com/@fullcalendar/daygrid@6.1.15/dist/f
 
 // Initialize the calendar with the necessary plugins
 const calendar = new Calendar(calendarEl, {
-  plugins: [dayGridPlugin, interactionPlugin],
+  plugins: [dayGridPlugin, interactionPlugin,],
   //... (rest of the calendar configuration)
 });
 
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         navLinks: true, // can click day/week labels to navigate views
         editable: false,
         dayMaxEvents: true, // allow "more" link when too many events
-        events: fetchCalendarEvents() // Fetch events from the server
+        events: fetchCalendarEvents(), // Fetch events from the server
     });
     calendar.render();
 });
@@ -48,7 +48,7 @@ function fetchCalendarEvents() {
             return fullCalendarEvents;
         })
      .catch(error => {
-            console.error('Error fetching or parsing ICS feed:', error);
+            console.error('Error fetching or parsing ICS feed:', error,);
             return []; // Return an empty array on error
         });
 }
